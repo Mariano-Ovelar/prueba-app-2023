@@ -5,8 +5,14 @@ const config: CapacitorConfig = {
   appName: 'PruebaApp',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
-  }
+    androidScheme: 'https',
+  },
+  plugins: {
+    SplashScreen: {
+      launchAutoHide: false,
+      androidSplashResourceName: 'launch_splash',
+    },
+  },
 };
 
 export default config;

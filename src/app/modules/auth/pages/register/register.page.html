@@ -1,0 +1,96 @@
+<div class="d-flex-center">
+  <form (ngSubmit)="submit()" class="ion-text-center">
+    <app-custom-input
+      [control]="form.controls.nombre"
+      type="text"
+      icon="person-outline"
+      label="Nombre"
+      autocomplete="name"
+    ></app-custom-input>
+
+    <div *ngIf="form.controls.nombre.errors && form.controls.nombre.dirty">
+      <div class="validators" *ngIf="form.controls.nombre.errors?.['required']">
+        Ingresa tu nombre
+      </div>
+      <div
+        class="validators"
+        *ngIf="form.controls.nombre.errors?.['minlength']"
+      >
+        Ingresa un nombre valido
+      </div>
+    </div>
+
+    <app-custom-input
+      [control]="form.controls.correo"
+      type="email"
+      icon="mail-outline"
+      label="Correo"
+      autocomplete="email"
+    ></app-custom-input>
+
+    <div *ngIf="form.controls.correo.errors && form.controls.correo.dirty">
+      <div class="validators" *ngIf="form.controls.correo.errors?.['required']">
+        Ingresa tu correo
+      </div>
+      <div class="validators" *ngIf="form.controls.correo.errors?.['email']">
+        Ingresa un correo valido
+      </div>
+    </div>
+    <app-custom-input
+      [control]="form.controls.clave"
+      type="password"
+      icon="lock-closed-outline"
+      label="Contraseña"
+    ></app-custom-input>
+    <div *ngIf="form.controls.clave.errors && form.controls.clave.dirty">
+      <div class="validators" *ngIf="form.controls.clave.errors?.['required']">
+        Ingresa tu contraseña
+      </div>
+    </div>
+
+    <app-custom-input
+      [control]="form.controls.confirmarClave"
+      type="password"
+      icon="checkmark-circle-outline"
+      label="Confirmar Contraseña"
+    ></app-custom-input>
+    <div
+      *ngIf="form.controls.confirmarClave.errors && form.controls.confirmarClave.dirty"
+    >
+      <div
+        class="validators"
+        *ngIf="form.controls.confirmarClave.errors?.['required']"
+      >
+        Ingresa tu contraseña
+      </div>
+      <div
+        class="validators"
+        *ngIf="form.controls.confirmarClave.errors?.['noMatch']"
+      >
+        Las contraseñas no coinsiden
+      </div>
+    </div>
+    <ion-button
+      class="ion-margin-vertical"
+      [disabled]="form.invalid"
+      type="submit"
+      shape="round"
+    >
+      Registrarme
+      <ion-icon slot="end" name="person-add-outline"></ion-icon>
+    </ion-button>
+
+    <div class="sign-up">
+      <div>¿ya tienes una cuentra?</div>
+      <ion-button
+        [routerLink]="['/auth/login']"
+        routerLinkActive="router-link-active"
+        class="ion-margin-vertical"
+        shape="round"
+      >
+        Ingresar
+        <ion-icon slot="end" name="log-in-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </form>
+</div>
